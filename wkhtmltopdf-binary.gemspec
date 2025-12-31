@@ -1,7 +1,7 @@
 # coding: utf-8
 
 Gem::Specification.new do |s|
-  s.name = "wkhtmltopdf-binary"
+  s.name = "wkhtmltopdf-binary-kami"
   s.version = "0.12.6.10"
   s.license = "Apache-2.0"
   s.author = "Zakir Durumeric"
