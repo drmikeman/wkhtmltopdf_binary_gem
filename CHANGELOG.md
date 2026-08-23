@@ -1,6 +1,7 @@
 # 0.12.6.10
 
 - Add support for Debian 13 (with Debian 12 binaries)
+- Add support for Ubuntu 26.04 using the Ubuntu 22.04 binary
 
 # 0.12.6.9
 
