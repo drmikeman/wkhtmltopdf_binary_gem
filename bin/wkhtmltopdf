@@ -95,20 +95,17 @@ def suffix
   suffix
 end
 
-if $PROGRAM_NAME == __FILE__
-  binary = "#{__FILE__}_#{suffix}"
+binary = "#{__FILE__}_#{suffix}"
 
-  if File.exist?("#{binary}.gz") && !File.exist?(binary)
-    File.open binary, 'wb', 0o755 do |file|
-      Zlib::GzipReader.open("#{binary}.gz") { |gzip| file << gzip.read }
-    end
+if File.exist?("#{binary}.gz") && !File.exist?(binary)
+  File.open binary, 'wb', 0o755 do |file|
+    Zlib::GzipReader.open("#{binary}.gz") { |gzip| file << gzip.read }
   end
-
-  unless File.exist? binary
-    raise 'Invalid platform, must be running on Ubuntu 16.04/18.04/20.04/22.04/24.04/26.04, ' \
-          'CentOS 6/7/8, Debian 9/10/11/12, Archlinux amd64, Debian 9/10/11/12 arm64, or Intel-based Cocoa macOS ' \
-          "(missing binary: #{binary})."
-  end
-
-  exec *$*.unshift(binary)
 end
+
+unless File.exist? binary
+  raise 'Invalid platform, must be running on Ubuntu 16.04/18.04/20.04/22.04/24.04/26.04, ' \
+        'CentOS 6/7/8, Debian 9/10/11/12, Archlinux amd64, Debian 9/10/11/12 arm64, or Intel-based Cocoa macOS ' \
+        "(missing binary: #{binary})."
+end
+exec *$*.unshift(binary)
