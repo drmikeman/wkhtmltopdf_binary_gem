@@ -45,7 +45,8 @@ def normalize_linux_os(os)
                          os.start_with?('tuxedo_22.') ||
                          os.start_with?('neon_24.') ||
                          os.start_with?('neon_22.') ||
-                         os.start_with?('linuxmint_22')
+                         os.start_with?('linuxmint_22') ||
+                         os.start_with?('omarchy_')
 
   os = 'centos_6' if (os.start_with?('amzn_') && os != 'amzn_2' && os != 'amzn_2023') ||
                      (os.empty? && File.read('/etc/centos-release').start_with?('CentOS release 6'))
@@ -73,8 +74,7 @@ def normalize_linux_os(os)
   os = 'debian_12' if !os_based_on_debian_9 && os.start_with?('debian_13')
 
   os = 'archlinux' if os.start_with?('arch_') ||
-                      os.start_with?('manjaro_') ||
-                      os.start_with?('omarchy_')
+                      os.start_with?('manjaro_')
 
   os
 end
