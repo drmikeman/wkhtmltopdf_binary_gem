@@ -41,6 +41,7 @@ def normalize_linux_os(os)
 
   os = 'ubuntu_22.04' if os.start_with?('ubuntu_22.') ||
                          os.start_with?('ubuntu_24.') ||
+                         os.start_with?('ubuntu_26.') ||
                          os.start_with?('tuxedo_22.') ||
                          os.start_with?('neon_24.') ||
                          os.start_with?('neon_22.') ||
@@ -104,7 +105,7 @@ if $PROGRAM_NAME == __FILE__
   end
 
   unless File.exist? binary
-    raise 'Invalid platform, must be running on Ubuntu 16.04/18.04/20.04/22.04, ' \
+    raise 'Invalid platform, must be running on Ubuntu 16.04/18.04/20.04/22.04/24.04/26.04, ' \
           'CentOS 6/7/8, Debian 9/10/11/12, Archlinux amd64, Debian 9/10/11/12 arm64, or Intel-based Cocoa macOS ' \
           "(missing binary: #{binary})."
   end
